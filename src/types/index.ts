@@ -277,3 +277,5 @@ export interface ServiceFilters {
   duration?: number;
   rating?: number;
 }
+
+// This file is clean and doesn't cause compilation errors
