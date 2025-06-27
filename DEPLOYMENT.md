@@ -1,59 +1,69 @@
-# Deployment Checklist for Vercel
+# 🚀 Vercel Deployment Guide
 
-## ✅ Local Build Status
-- [x] `npm run build` - SUCCESS
-- [x] `npm run lint` - SUCCESS
-- [x] No TypeScript errors
-- [x] All API routes working with mock data
+Your project is now optimized for deployment! Here's what was fixed:
 
-## 🚀 Vercel Deployment Steps
+## ✅ Recent Fixes Applied:
+- ✅ Added Node.js version specification (>=18.0.0)
+- ✅ Simplified Vercel configuration 
+- ✅ Added Unsplash image domain to Next.js config
+- ✅ Cleaned up environment variables
+- ✅ Reduced function timeout to 10s
+- ✅ All builds passing locally
 
-### 1. Environment Variables in Vercel Dashboard
-Add these in your Vercel project settings:
+## 🚀 Step-by-Step Deployment
 
-```
-NEXT_PUBLIC_APP_URL=https://your-project-name.vercel.app
-NEXT_PUBLIC_SITE_NAME=AutoShop Pro
-DEFAULT_PAGE_SIZE=12
-```
-
-**IMPORTANT**: Replace `your-project-name` with your actual Vercel project name.
-
-### 2. Build Settings (Vercel Dashboard)
-- Framework Preset: Next.js
-- Build Command: `npm run build`
-- Output Directory: `.next`
-- Install Command: `npm install`
-
-### 3. Common Deployment Issues & Solutions
-
-#### Issue: "Environment variable not found"
-- Solution: Make sure all environment variables are added in Vercel dashboard
-- Don't include `.env.local` in your Git repository
-
-#### Issue: "Build failed during compilation"
-- Solution: Your build works locally, so this is likely an environment issue
-- Check that all dependencies are in `package.json`
-
-#### Issue: "Function timeout"
-- Solution: Your API routes are simple mock data, shouldn't timeout
-
-#### Issue: "Domain configuration"
-- Solution: Update `NEXT_PUBLIC_APP_URL` to match your actual Vercel URL
-
-### 4. Quick Deploy Commands
+### 1. Commit Your Changes
 ```bash
-# If you have Vercel CLI installed
-vercel --prod
-
-# Or push to your connected Git repository
 git add .
-git commit -m "Fix deployment issues"
+git commit -m "Fix deployment configuration"
 git push origin main
 ```
 
-## 🔧 If Still Failing
-1. Check Vercel build logs for specific error messages
-2. Ensure your Git repository doesn't include `.env.local`
-3. Make sure all imports are correct (case-sensitive)
-4. Verify all image paths exist or use placeholder images
+### 2. Vercel Environment Variables
+Add ONLY these in your Vercel dashboard:
+```
+NEXT_PUBLIC_APP_URL=https://your-project-name.vercel.app
+NEXT_PUBLIC_SITE_NAME=AutoShop Pro
+```
+
+### 3. Vercel Build Settings
+- **Framework Preset**: Next.js
+- **Node.js Version**: 18.x or 20.x
+- **Build Command**: `npm run build`
+- **Output Directory**: Leave empty (auto-detected)
+- **Install Command**: `npm install`
+
+## 🔧 Common Deployment Issues & Solutions
+
+### Issue: "Build failed at compilation"
+**Solution**: Your build works locally, check Vercel logs for specific errors
+
+### Issue: "Function execution timeout"
+**Solution**: Reduced timeout to 10s in vercel.json
+
+### Issue: "Module not found"
+**Solution**: All imports are using proper @ alias paths
+
+### Issue: "Environment variables not working"
+**Solution**: Use ONLY the two variables listed above
+
+### Issue: "Images not loading"
+**Solution**: Now using Unsplash CDN images with proper domain config
+
+## 🎯 What Your Deployed Site Will Have:
+- ✅ Homepage with hero section
+- ✅ Products page with car parts (using Unsplash images)
+- ✅ Services page with auto services
+- ✅ Contact form (demo mode)
+- ✅ Appointment booking (demo mode)
+- ✅ Shopping cart (client-side)
+- ✅ Fully responsive design
+
+## � If Still Failing:
+1. Check the Vercel deployment logs for the exact error
+2. Ensure your Git repo doesn't include `.env.local` 
+3. Make sure you're using Node.js 18+ in Vercel settings
+4. Try deploying with a fresh Vercel project connection
+
+## 📞 Need Help?
+Share the specific error message from Vercel deployment logs!
