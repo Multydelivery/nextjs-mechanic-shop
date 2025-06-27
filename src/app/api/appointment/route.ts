@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // TODO: Save to database
-    console.log('Appointment booking:', body);
+    // Demo mode - just log and return success
+    console.log('Appointment booking (demo mode):', body);
 
     // Mock response
     const appointment = {

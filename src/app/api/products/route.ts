@@ -72,14 +72,11 @@ const mockProducts: Product[] = [
 
 export async function GET(request: NextRequest) {
   try {
-    // Check API rate limiting if configured
-    const rateLimitEnabled = process.env.ENABLE_RATE_LIMITING === 'true';
-    
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     const search = searchParams.get('search');
     const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || process.env.DEFAULT_PAGE_SIZE || '12');
+    const limit = parseInt(searchParams.get('limit') || '12');
 
     let filteredProducts = mockProducts;
 
@@ -125,17 +122,6 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if API key is required for product creation
-    const apiKey = request.headers.get('x-api-key');
-    const requiredApiKey = process.env.ADMIN_API_KEY;
-    
-    if (requiredApiKey && apiKey !== requiredApiKey) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
     const body = await request.json();
     
     // Validate required fields
@@ -149,7 +135,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Create new product
+    // Create new product (mock - just return success for demo)
     const newProduct: Product = {
       id: Date.now().toString(),
       slug: body.name.toLowerCase().replace(/\s+/g, '-'),
@@ -160,8 +146,8 @@ export async function POST(request: NextRequest) {
       ...body
     };
 
-    // TODO: Save to database using DATABASE_URL
-    console.log('Creating product:', newProduct);
+    // For demo purposes, just return the product without saving
+    console.log('Creating product (demo mode):', newProduct);
 
     return NextResponse.json({
       success: true,
