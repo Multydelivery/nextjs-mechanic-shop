@@ -37,6 +37,16 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  // TODO: Fetch appointments from database
-  return NextResponse.json({ appointments: [] });
+  // Demo mode - return mock appointments
+  const mockAppointments = [
+    {
+      id: '1',
+      serviceId: '1',
+      customerName: 'John Doe',
+      customerEmail: 'john@example.com',
+      appointmentDate: new Date().toISOString(),
+      status: 'pending'
+    }
+  ];
+  return NextResponse.json({ appointments: mockAppointments });
 }

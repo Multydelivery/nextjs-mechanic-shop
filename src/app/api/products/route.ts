@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Product } from '@/types';
 
-// Mock products data - replace with database queries
+// Mock products data - using placeholder images for demo
 const mockProducts: Product[] = [
   {
     id: '1',
@@ -10,7 +10,7 @@ const mockProducts: Product[] = [
     description: 'High-quality synthetic motor oil for optimal engine performance',
     price: 29.99,
     category: 'Oil & Fluids',
-    imageUrl: '/images/products/motor-oil.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
     inStock: true,
     brand: 'Mobil 1',
     rating: 4.8,
@@ -23,7 +23,7 @@ const mockProducts: Product[] = [
     description: 'Premium ceramic brake pads for superior stopping power',
     price: 79.99,
     category: 'Brakes',
-    imageUrl: '/images/products/brake-pads.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1605459173815-a7103e87c7c5?w=400&h=300&fit=crop',
     inStock: true,
     brand: 'Brembo',
     rating: 4.9,
@@ -36,7 +36,7 @@ const mockProducts: Product[] = [
     description: 'High-flow air filter for improved engine performance',
     price: 24.99,
     category: 'Filters',
-    imageUrl: '/images/products/air-filter.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400&h=300&fit=crop',
     inStock: true,
     brand: 'K&N',
     rating: 4.7,
@@ -49,7 +49,7 @@ const mockProducts: Product[] = [
     description: 'Platinum spark plugs for reliable ignition and fuel efficiency',
     price: 39.99,
     category: 'Engine',
-    imageUrl: '/images/products/spark-plugs.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1596813276536-09b06b97e3e5?w=400&h=300&fit=crop',
     inStock: true,
     brand: 'NGK',
     rating: 4.6,
@@ -62,7 +62,7 @@ const mockProducts: Product[] = [
     description: 'Maintenance-free automotive battery with 3-year warranty',
     price: 149.99,
     category: 'Electrical',
-    imageUrl: '/images/products/car-battery.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1609037342757-a0ec9db6ad2b?w=400&h=300&fit=crop',
     inStock: true,
     brand: 'Interstate',
     rating: 4.5,
@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
     const newProduct: Product = {
       id: Date.now().toString(),
       slug: body.name.toLowerCase().replace(/\s+/g, '-'),
-      imageUrl: body.imageUrl || '/images/products/default.jpg',
+      imageUrl: body.imageUrl || 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
       inStock: body.inStock ?? true,
       rating: 0,
       reviewCount: 0,
